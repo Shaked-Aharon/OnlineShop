@@ -1,0 +1,47 @@
+<div class="container">
+    <aside></aside>
+    <div class="profile">
+        <h3>Profile:</h3>
+        <p *ngIf="this.currentUser?.username">Usernname: <input type="text" disabled
+                [value]="this.currentUser.username"></p>
+        <p *ngIf="this.currentUser?.email">Email: <input type="text" disabled
+                [value]="this.currentUser.email"></p>
+        <p *ngIf="this.currentUser?.firstName">First Name: <input type="text" disabled
+                [value]="this.currentUser.firstName"></p>
+        <p *ngIf="this.currentUser?.lastName">Last Name: <input type="text" disabled
+                [value]="this.currentUser.lastName"></p>
+        <p>City:&nbsp;&nbsp;&nbsp; &nbsp;<input [(ngModel)]="this.currentUser.address.city" type="text"></p>
+        <p>Street: <input [(ngModel)]="this.currentUser.address.street" type="text"></p>
+        <p>
+                House:&nbsp;<input [(ngModel)]="this.currentUser.address.house" class="input-width" type="number">
+                Entrance:&nbsp;<input [(ngModel)]="this.currentUser.address.entrance" class="input-width" type="text">
+                Floor:&nbsp;<input [(ngModel)]="this.currentUser.address.floor" class="input-width" type="number">
+                Apartment:&nbsp;<input [(ngModel)]="this.currentUser.address.apartment" class="input-width" type="number">
+        </p>
+        <button (click)="saveProfileChanges()">Save Changes</button>
+        <br>
+        <span style="color: rgb(223, 76, 76);">{{this.err}}</span>
+        <br>
+        <br>
+        <div class="orders-history">
+            <h3>Order History:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Orderd At</th>
+                        <th>Shipment Date</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let o of this.redux.getState().ordersHistory">
+                        <td>{{o.orderedAt | date:"medium"}}</td>
+                        <td>{{o.dateToDeliver | date:"medium"}}</td>
+                        <td>{{o.totalPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <aside></aside>
+</div>

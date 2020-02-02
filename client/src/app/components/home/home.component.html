@@ -1,0 +1,14 @@
+<div class="container">
+    <aside></aside>
+    <div class="home">
+        <h2>Wellcome to MyShop Online Store</h2>
+        <p>Here you can order all your favorites products. <br>Whitout to leave the sofa</p>
+
+        <p>Total Orders submitted: {{this.redux.getState().totalOrders}}</p>
+        <p>Available products in our store: {{this.redux.getState().allProducts.length}}</p>
+        <br>
+        <br>
+        <p *ngIf="this.redux.getState().loggedIn">Number of orders you had: {{this.redux.getState().ordersHistory.length}}</p>
+    </div>
+    <aside></aside>
+</div>

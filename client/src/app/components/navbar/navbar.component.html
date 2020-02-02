@@ -1,0 +1,9 @@
+<ul>
+    <li><a routerLink="/home">Home</a></li>
+    <li *ngIf="this.redux.getState().loggedIn"><a routerLink="/products">Products</a></li>
+    <li *ngIf="this.redux.getState().loggedIn"><a routerLink="/profile">Profile</a></li>
+    <li *ngIf="this.redux.getState().isAdmin"><a routerLink="/admin">Admin</a></li>
+    <li *ngIf="this.redux.getState().loggedIn" style="float: right;"><a routerLink="" (click)="handleLogOut()">LogOut</a></li>
+    <li *ngIf="!this.redux.getState().loggedIn" style="float: right;"><a routerLink="/login">LogIn</a></li>
+    <li *ngIf="!this.redux.getState().loggedIn" style="float: right;"><a routerLink="/register">Register</a></li>
+</ul>

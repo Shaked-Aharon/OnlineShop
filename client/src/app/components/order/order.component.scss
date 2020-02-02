@@ -1,0 +1,53 @@
+.order{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    text-align: center;
+    aside{
+        grid-column: span 1;
+    }
+
+    main{
+        grid-column: span 10;
+        box-shadow: 1px 1px 5px black;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        .cart-info{
+            height: 100%;
+            grid-column: span 6;
+            border-right: 1px solid black;
+
+            table{
+                box-sizing: border-box;
+                width: 100%;
+            }
+        }
+        
+        
+        .user-info{
+            height: 100%;
+            grid-column: span 6;
+            border-left: 1px solid black;
+            padding: 0 15px;
+            .input-width{
+                width: 45px;
+            }
+
+            .shipping-info, .payment-info{
+                text-align: left;
+            }
+        }
+
+    }
+    
+    .order-btn{
+        box-sizing: border-box;
+        border: none;
+        background-color: rgb(230, 78, 78);
+        width: 40%;
+        padding: 5px 15px;
+        font-size: larger;
+        color: white;
+    }
+}

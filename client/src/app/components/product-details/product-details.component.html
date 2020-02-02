@@ -1,0 +1,6 @@
+<div class="product-details">
+    <img src="http://localhost:3000/assets/images/{{product.image}}" alt="Product Image" width="245" height="150">
+    <p>Name: <b>{{product.name}}</b><br> 
+    Price: <b>{{product.price}}</b>    <br>
+    Quantity: <input [(ngModel)]="quantity" value="1" type="number"> <button (click)="addToCart()">Add To Cart</button></p>
+</div>

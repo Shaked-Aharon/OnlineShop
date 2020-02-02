@@ -1,0 +1,14 @@
+<div class="layout">
+    <header>
+        <div class="container">
+            <span *ngIf="this.redux.getState().loggedIn" class="hello">Hello: {{this.redux.getState().currentUser?.firstName}} {{this.redux.getState().currentUser?.lastName}}</span>
+            <h1>MyShop</h1>
+            <nav><app-navbar></app-navbar></nav>
+        </div>
+    </header>
+
+
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+</div>

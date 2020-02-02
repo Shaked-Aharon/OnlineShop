@@ -1,0 +1,74 @@
+<div class="order">
+    <aside></aside>
+    <main>
+        <div class="cart-info">
+            <h2>My Cart:</h2>
+            {{this.currentDate | date:"short"}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price Per Unit</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cp of this.redux.getState().currentCart?.cartProducts">
+                        <td><b>{{cp.productName}}</b></td>
+                        <td>{{cp.quantity}}</td>
+                        <td>{{cp.totalPrice/cp.quantity}}</td>
+                        <td>{{cp.totalPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Total Price: {{this.redux.getState().currentCart.overallPrice}}</h3>
+        </div>
+        <div class="user-info">
+            <h2>Order Details:</h2>
+            <span>* in order to set a default address go to the profile page</span>
+            <div class="shipping-info">
+                <h3>Shipping Info:</h3>
+                <p>City:&nbsp;&nbsp;&nbsp; &nbsp;<input [(ngModel)]="this.address.city" type="text"></p>
+                <p>Street: <input [(ngModel)]="this.address.street" type="text"></p>
+                <p>
+                    House:&nbsp;<input [(ngModel)]="this.address.house" class="input-width" type="number">
+                    Entrance:&nbsp;<input [(ngModel)]="this.address.entrance" class="input-width" type="text">
+                    Floor:&nbsp;<input [(ngModel)]="this.address.floor" class="input-width" type="number">
+                    Apartment:&nbsp;<input [(ngModel)]="this.address.apartment" class="input-width" type="number>">
+                </p>
+                <p>Date & Time to deliver: 
+                    Date: <input [(ngModel)]="this.deliverDate" type="date" name="StartDate" min="{{currentDate | date:'yyyy-MM-dd'}}">
+                    Time: <input [(ngModel)]="this.deliverTime" type="time">
+                </p>
+            </div>
+            <br>
+            <div class="payment-info">
+                <h3>Payment Info:</h3>
+                <p>CC Number: <input [(ngModel)]="this.ccNumber" type="text"></p>
+                <p>
+                    Expirtaion:
+                    <select [(ngModel)]="this.ccMM" required>
+                        <option disabled selected value="">MM</option>
+                        <option *ngFor="let mm of months; let i = index" value="{{i+1}}">{{i+1}}</option>
+                    </select>
+                    /
+                    <select [(ngModel)]="this.ccYY" required>
+                        <option disabled selected value="">YYYY</option>
+                        <option *ngFor="let yy of years; let i = index">{{yy}}</option>
+                    </select>
+
+                </p>
+                <p>CCV: <input [(ngModel)]="this.ccCVV" type="text"></p>
+            </div>
+            <br>
+            <br>
+            <button class="order-btn" (click)="formValidate()">Order</button>
+            <br>
+            <br>
+            <p style="color: rgb(219, 74, 74);" *ngFor="let e of this.err">{{e}}</p>
+            <br>
+        </div>
+    </main>
+    <aside></aside>
+</div>

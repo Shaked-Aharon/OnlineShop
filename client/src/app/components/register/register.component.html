@@ -1,0 +1,46 @@
+<div id="login-box">
+  <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>Sign up</h1>
+
+    <input type="text" pattern="\w{2,}" formControlName="firstName" class="form-control" placeholder="First Name..."
+      required />
+    <div class="error-field" *ngIf="submitted && f.firstName.errors">
+      <span *ngIf="f.firstName.errors.required">First Name is required</span> 
+      <span *ngIf="f.firstName.errors.pattern">First Name need at least 2 letters</span> 
+    </div>
+    <br>
+    <input type="text" pattern="\w{2,}" formControlName="lastName" class="form-control" placeholder="Last Name..."
+      required />
+    <div class="error-field" *ngIf="submitted && f.lastName.errors">
+      <span *ngIf="f.lastName.errors.required">Last Name is required</span> 
+      <span *ngIf="f.lastName.errors.pattern">Last Name need at least 2 letters</span> 
+    </div>
+    <br>
+    <input type="text" pattern="\w{4,}" formControlName="username" class="form-control" placeholder="Username..."
+      required />
+    <div class="error-field" *ngIf="submitted && f.username.errors">
+      <span *ngIf="f.username.errors.required">Username is required</span> 
+      <span *ngIf="f.username.errors.pattern">Username need at least 4 letters</span> 
+    </div>
+    <br>
+    <input type="email" formControlName="email" class="form-control" placeholder="Email..." required />
+    <div class="error-field" *ngIf="submitted && f.email.errors">
+      <span *ngIf="f.email.errors.required">Email is required</span> 
+      <span *ngIf="f.email.errors.email">Not a valid Email</span> 
+    </div>
+    <br>
+    <input type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" formControlName="password" class="form-control" placeholder="Password..." required />
+    <div class="error-field" *ngIf="submitted && f.password.errors">
+      <span *ngIf="f.password.errors.required">Password is required</span> 
+      <span *ngIf="f.password.errors.pattern">Password min: 8, must contain: numbers and letters</span> 
+    </div>
+    <br>
+    <input type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password..." required />
+    <div class="error-field" *ngIf="submitted && f.confirmPassword.errors">
+      <span *ngIf="f.confirmPassword.errors.required">Confrim Password is required</span> 
+      <span *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</span> 
+    </div>
+    <br>
+   <div class="btn-div"><input type="submit" name="signup_submit" value="Sign me up" /></div>
+  </form>
+</div>

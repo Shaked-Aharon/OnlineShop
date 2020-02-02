@@ -1,0 +1,35 @@
+<div class="products">
+    <ul class="categories-menu">
+        <li><a (click)="changeCategory($event, null)">All</a></li>
+        <li *ngFor="let c of this.redux.getState().categories"><a (click)="changeCategory($event, c)">{{c.name}}</a></li>
+        <li style="float: right;"><input [(ngModel)]="searchInput" type="text" placeholder="Search..." (keyup)="searchProductByName()"></li>
+    </ul>
+    <div class="products-container">
+        <div *ngIf="this.redux.getState().loading">as</div>
+        <app-product-details *ngFor="let product of this.redux.getState().productsToShow" [product]="product"></app-product-details>
+    </div>
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>TotalPrice</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cp of this.redux.getState().currentCart?.cartProducts">
+                    <td>{{cp.productName}}</td>
+                    <td>{{cp.quantity}}</td>
+                    <td>{{cp.totalPrice}}</td>
+                    <td><button (click)="deleteFromCart(cp)" class="delete-from-cart">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="check-out">
+            <h3>Total: {{this.redux.getState().currentCart?.overallPrice}}</h3>
+            <button (click)="handleCheckOut()">Check-Out</button>
+        </div>
+    </div>
+</div>

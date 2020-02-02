@@ -1,0 +1,18 @@
+.container{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    aside{
+        height: 100%;
+        grid-column: span 1;
+    }
+
+    div{
+        text-align: center;
+        height: 100%;
+        grid-column: span 10;
+        box-shadow: 0px 0px 5px 0.2px black;
+    } 
+}
